@@ -37,7 +37,7 @@ public class UsuarioTest {
             expect().
                 statusCode(200).
             when().
-                post("http://localhost:8080/usuario");
+                post("http://htmessenger.herokuapp.com:8080/usuario");
 
     }
 }
