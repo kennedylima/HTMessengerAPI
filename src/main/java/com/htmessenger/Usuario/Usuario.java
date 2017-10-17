@@ -28,5 +28,6 @@ public class Usuario extends EntidadeBase implements Serializable {
         this.senha = senha;
     }
 
-
+    public Usuario() {
+    }
 }
