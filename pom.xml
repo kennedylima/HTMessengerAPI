@@ -22,7 +22,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<spring.version>1.2.7.RELEASE</spring.version>
 	</properties>
 
 	<dependencies>
@@ -76,15 +75,15 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>${spring.version}</version>
-				<configuration>
-					<finalName>${project.name}</finalName>
-				</configuration>
+				<version>2.0.0.BUILD-SNAPSHOT</version>
 				<executions>
 					<execution>
 						<goals>
 							<goal>repackage</goal>
 						</goals>
+						<configuration>
+							<finalName>htmessenger</finalName>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
