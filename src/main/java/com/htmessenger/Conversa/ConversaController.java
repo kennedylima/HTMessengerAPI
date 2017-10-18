@@ -26,4 +26,15 @@ public class ConversaController {
     private Collection<Conversa> buscarTodos(){
         return conversaRepository.buscarTodos();
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public ResponseEntity<Conversa> buscarPor(@PathVariable("id") int id) {
+        return ResponseEntity.status(200).body(conversaRepository.buscarPor(id));
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public ResponseEntity remover(@PathVariable("id") int id) {
+        conversaRepository.remover(id);
+        return ResponseEntity.status(200).body("Removido com Sucesso!");
+    }
 }

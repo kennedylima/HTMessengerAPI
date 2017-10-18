@@ -7,8 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
-
 import static com.jayway.restassured.RestAssured.given;
 
 @RunWith(SpringRunner.class)
@@ -17,6 +15,7 @@ public class UsuarioRestTest {
 
     Usuario usuario ;
     private static int USUARIO_ID = 0;
+    private static String URL = "http://htmessenger.herokuapp.com/usuario/";
 
     @Test
     public void deve_salvar_um_usuario(){
@@ -34,9 +33,9 @@ public class UsuarioRestTest {
             expect().
                 statusCode(200).
             when().
-                get("http://localhost:8080/usuario/"+USUARIO_ID).as(Usuario.class);
+                get( URL + USUARIO_ID ).as(Usuario.class);
 
-        assertEquals(USUARIO_ID, usuarioRetornado.getId());
+        assertEquals( USUARIO_ID, usuarioRetornado.getId() );
     }
 
     @Test
@@ -47,7 +46,7 @@ public class UsuarioRestTest {
             expect().
                 statusCode(200).
             when().
-                get("http://localhost:8080/usuario").as(Usuario[].class);
+                get( URL ).as(Usuario[].class);
 
         assertNotNull(usuarios);
     }
@@ -61,7 +60,7 @@ public class UsuarioRestTest {
             expect().
                 statusCode(200).
             when().
-                delete("http://localhost:8080/usuario/"+USUARIO_ID);
+                delete( URL +USUARIO_ID );
     }
 
     private void salvarUsuario(){
@@ -70,11 +69,11 @@ public class UsuarioRestTest {
         USUARIO_ID = Integer.parseInt(
             given().
                 contentType(MediaType.APPLICATION_JSON_VALUE).
-            body(usuario).
+            body( usuario ).
             expect().
                 statusCode(200).
             when().
-                post("http://localhost:8080/usuario").asString()
+                post( URL ).asString()
         );
     }
 }

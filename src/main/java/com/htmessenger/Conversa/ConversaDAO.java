@@ -1,5 +1,6 @@
 package com.htmessenger.Conversa;
 
+import com.htmessenger.Usuario.Usuario;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +21,18 @@ public class ConversaDAO  implements ConversaRepository{
     }
 
     @Override
+    public Conversa buscarPor(int id) {
+        return entityManager.find(Conversa.class, id);
+    }
+
+    @Override
     public Collection<Conversa> buscarTodos() {
         return entityManager.createQuery("FROM Conversa c").getResultList();
     }
+
+    @Override
+    public void remover(int id) {
+        entityManager.remove(entityManager.getReference(Conversa.class, id));
+    }
+
 }
