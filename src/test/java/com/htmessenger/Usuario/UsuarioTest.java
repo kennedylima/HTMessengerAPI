@@ -4,9 +4,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Collection;
 
 import static org.junit.Assert.*;
 import static com.jayway.restassured.RestAssured.given;
@@ -28,16 +28,31 @@ public class UsuarioTest {
 
 
     @Test
-    public void deve_salvar_um_usuario_atraves_da_api(){
-        Usuario usuario = new Usuario("Snow", "snow","123");
+    public void deve_buscar_um_usuario_pelo_id(){
+        int ID_DO_USUARIO = 1;
+        Usuario usuarioEncontrado = usuarioRepository.buscarPor(ID_DO_USUARIO);
 
-        given().
-            contentType(MediaType.APPLICATION_JSON_VALUE).
-            body(usuario).
-            expect().
-                statusCode(200).
-            when().
-                post("http://htmessenger.herokuapp.com/usuario");
-
+        assertNotNull(usuarioEncontrado);
     }
+
+    @Test
+    public void deve_buscar_todos_os_usuarios(){
+        Collection<Usuario> usuarios = usuarioRepository.buscarTodos();
+        assertTrue(usuarios.size() > 0);
+    }
+
+
+    @Test
+    public void deve_remover_um_usuario(){
+        Usuario usuario = new Usuario( "Remover", "remover", "remover" );
+        usuarioRepository.salvar(usuario);
+
+        usuarioRepository.remover(usuario.getId());
+        usuario = usuarioRepository.buscarPor(usuario.getId());
+
+        assertNull(usuario);
+    }
+
+
+
 }

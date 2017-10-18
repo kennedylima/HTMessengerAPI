@@ -1,8 +1,6 @@
 package com.htmessenger.Usuario;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,4 +25,14 @@ public class UsuarioController {
         return usuarioRepository.buscarTodos();
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public ResponseEntity<Usuario> buscarPor(@PathVariable("id") int id) {
+        return ResponseEntity.status(200).body(usuarioRepository.buscarPor(id));
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public ResponseEntity remover(@PathVariable("id") int id) {
+        usuarioRepository.remover(id);
+        return ResponseEntity.status(200).body("Removido com Sucesso!");
+    }
 }

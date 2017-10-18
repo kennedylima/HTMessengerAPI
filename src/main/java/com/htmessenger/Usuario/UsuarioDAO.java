@@ -20,12 +20,17 @@ public class UsuarioDAO implements UsuarioRepository {
     }
 
     @Override
-    public Usuario get(int id) {
+    public Usuario buscarPor(int id) {
         return entityManager.find(Usuario.class, id);
     }
 
     @Override
     public Collection<Usuario> buscarTodos() {
         return entityManager.createQuery("FROM Usuario u").getResultList();
+    }
+
+    @Override
+    public void remover(int id) {
+        entityManager.remove(entityManager.getReference(Usuario.class, id));
     }
 }

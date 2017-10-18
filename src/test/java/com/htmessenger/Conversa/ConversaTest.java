@@ -25,8 +25,8 @@ public class ConversaTest {
 
     @Test
     public void deve_salvar_uma_conversa(){
-        Usuario usuarioOrigem = usuarioRepository.get(1);
-        Usuario usuarioDestino = usuarioRepository.get(2);
+        Usuario usuarioOrigem = usuarioRepository.buscarPor(1);
+        Usuario usuarioDestino = usuarioRepository.buscarPor(2);
 
         Conversa conversa = new Conversa("Olá !", usuarioOrigem, usuarioDestino);
 
@@ -38,8 +38,8 @@ public class ConversaTest {
 
     @Test
     public void deve_salvar_uma_conversa_atraves_da_api(){
-        Usuario usuarioOrigem = usuarioRepository.get(1);
-        Usuario usuarioDestino = usuarioRepository.get(2);
+        Usuario usuarioOrigem = usuarioRepository.buscarPor(1);
+        Usuario usuarioDestino = usuarioRepository.buscarPor(2);
 
         Conversa conversa = new Conversa("Olá !", usuarioOrigem, usuarioDestino);
 
