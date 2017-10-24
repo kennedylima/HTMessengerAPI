@@ -10,4 +10,6 @@ public interface UsuarioRepository {
     Collection<Usuario> buscarTodos();
 
     void remover(int id);
+
+    Usuario autenticar(Usuario usuario);
 }

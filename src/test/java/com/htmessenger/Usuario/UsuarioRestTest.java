@@ -13,7 +13,7 @@ public class UsuarioRestTest {
 
     Usuario usuario ;
     private static int USUARIO_ID = 0;
-    private static String URL = "http://htmessenger.herokuapp.com/usuario/";
+    private static String URL = "http://localhost:8080/usuario/";
 
     @Test
     public void deve_salvar_um_usuario(){
@@ -61,8 +61,21 @@ public class UsuarioRestTest {
                 delete( URL +USUARIO_ID );
     }
 
+    @Test
+    public void deve_autenticar_um_usuario(){
+        usuario = new Usuario( "Capitao America", "c.america", "123" );
+
+        given().
+                contentType(MediaType.APPLICATION_JSON_VALUE).
+                body( usuario ).
+                expect().
+                statusCode(200).
+                when().
+                post( URL+"autenticar" );
+    }
+
     private void salvarUsuario(){
-        usuario = new Usuario( "Capitão América", "c.america", "123" );
+        usuario = new Usuario( "Capitao America", "c.america", "123" );
 
         USUARIO_ID = Integer.parseInt(
             given().

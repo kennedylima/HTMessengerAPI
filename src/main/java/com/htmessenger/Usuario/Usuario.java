@@ -30,4 +30,12 @@ public class Usuario extends EntidadeBase implements Serializable {
 
     public Usuario() {
     }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
 }

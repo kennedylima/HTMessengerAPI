@@ -20,6 +20,11 @@ public class UsuarioController {
         return ResponseEntity.status(200).body(usuario.getId());
     }
 
+    @RequestMapping(method = RequestMethod.POST, value = "/autenticar")
+    public ResponseEntity<Usuario> autenticar(@RequestBody Usuario usuario) {
+        return ResponseEntity.status(200).body(usuarioRepository.autenticar(usuario));
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     private Collection<Usuario> buscarTodos(){
         return usuarioRepository.buscarTodos();
