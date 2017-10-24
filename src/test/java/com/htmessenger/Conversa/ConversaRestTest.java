@@ -51,8 +51,8 @@ public class ConversaRestTest {
 
 
     @Test
-    public void deve_remover_um_usuario(){
-        salvarConversa();
+    public void deve_remover_uma_conversa(){
+        //salvarConversa();
         given().
                 accept(MediaType.APPLICATION_JSON_VALUE).
                 expect().
@@ -62,13 +62,11 @@ public class ConversaRestTest {
     }
 
     private void salvarConversa(){
-        int ID = 1;
-        Usuario usuarioOrigem = buscarUsuarioPor(ID);
+        Usuario usuarioOrigem = buscarUsuarioPor(1);
 
-        ID = 2;
-        Usuario usuarioDestino = buscarUsuarioPor(ID);
+        Usuario usuarioDestino = buscarUsuarioPor(9);
 
-        Conversa conversa = new Conversa("Olá !", usuarioOrigem, usuarioDestino);
+        Conversa conversa = new Conversa(" Eu tenho um plano, Ataque.", usuarioOrigem, usuarioDestino);
 
         CONVERSA_ID = Integer.parseInt(
                 given().

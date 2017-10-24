@@ -16,7 +16,7 @@ public class Usuario extends EntidadeBase implements Serializable {
 
     @Column
     @JsonView
-    private  String usuario;
+    private  String login;
 
     @Column
     @JsonView
@@ -24,7 +24,7 @@ public class Usuario extends EntidadeBase implements Serializable {
 
     public Usuario(String nome, String usuario, String senha) {
         this.nome = nome;
-        this.usuario = usuario;
+        this.login = usuario;
         this.senha = senha;
     }
 

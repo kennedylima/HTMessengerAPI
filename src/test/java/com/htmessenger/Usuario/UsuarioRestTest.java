@@ -9,8 +9,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static com.jayway.restassured.RestAssured.given;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
 public class UsuarioRestTest {
 
     Usuario usuario ;
@@ -64,7 +62,7 @@ public class UsuarioRestTest {
     }
 
     private void salvarUsuario(){
-        usuario = new Usuario( "Kennedy", "kennedy", "123" );
+        usuario = new Usuario( "Capitão América", "c.america", "123" );
 
         USUARIO_ID = Integer.parseInt(
             given().
