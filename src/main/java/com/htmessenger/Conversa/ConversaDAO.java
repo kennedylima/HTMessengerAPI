@@ -22,7 +22,11 @@ public class ConversaDAO  implements ConversaRepository{
 
     @Override
     public Collection<Conversa> buscarConversaEntre(int usuarioOrigem, int usuarioDestino) {
-         return entityManager.createQuery("FROM Conversa c WHERE c.usuarioOrigem.id ="+usuarioOrigem+" AND c.usuarioDestino="+usuarioDestino).getResultList();
+         return entityManager.createQuery("" +
+                 "FROM Conversa c " +
+                 "WHERE c.usuarioOrigem.id ="+usuarioOrigem+" AND c.usuarioDestino="+usuarioDestino+" " +
+                 "OR c.usuarioDestino.id="+usuarioOrigem+"c.usuarioOrigem.id ="+usuarioDestino+"" +
+                 "ORDER BY c.id" ).getResultList();
     }
 
     @Override
