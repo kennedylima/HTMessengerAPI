@@ -21,14 +21,15 @@ public class ConversaDAO  implements ConversaRepository{
     }
 
     @Override
-    public Conversa buscarPor(int id) {
-        return entityManager.find(Conversa.class, id);
+    public Collection<Conversa> buscarConversaEntre(int usuarioOrigem, int usuarioDestino) {
+         return entityManager.createQuery("FROM Conversa c WHERE c.usuarioOrigem.id ="+usuarioOrigem+" AND c.usuarioDestino="+usuarioDestino).getResultList();
     }
 
     @Override
     public Collection<Conversa> buscarTodos() {
         return entityManager.createQuery("FROM Conversa c").getResultList();
     }
+
 
     @Override
     public void remover(int id) {

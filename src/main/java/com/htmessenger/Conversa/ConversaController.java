@@ -1,8 +1,6 @@
 package com.htmessenger.Conversa;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,9 +25,9 @@ public class ConversaController {
         return conversaRepository.buscarTodos();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public ResponseEntity<Conversa> buscarPor(@PathVariable("id") int id) {
-        return ResponseEntity.status(200).body(conversaRepository.buscarPor(id));
+    @RequestMapping(method = RequestMethod.GET, value = "/{usuarioOrigem}/{usuarioDestino}")
+    public Collection<Conversa>  buscarPor(@PathVariable("usuarioOrigem") int usuarioOrigem, @PathVariable("usuarioDestino") int usuarioDestino) {
+        return conversaRepository.buscarConversaEntre(usuarioOrigem, usuarioDestino);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")

@@ -37,6 +37,5 @@ public class UsuarioDAO implements UsuarioRepository {
     @Override
     public Usuario autenticar(Usuario usuario) {
         return (Usuario) entityManager.createQuery("FROM Usuario u WHERE u.login ='"+usuario.getLogin()+"' AND u.senha ='"+usuario.getSenha()+"'").getSingleResult();
-        //return (Usuario) entityManager.createQuery("FROM Usuario u").setParameter("login", usuario.getLogin()).setParameter("senha", usuario.getSenha()).getSingleResult();
     }
 }

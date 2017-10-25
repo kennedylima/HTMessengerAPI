@@ -7,7 +7,7 @@ public interface ConversaRepository {
 
     Collection<Conversa> buscarTodos();
 
-    Conversa buscarPor(int id);
+    Collection<Conversa>  buscarConversaEntre(int usuarioOrigem, int usuarioDestino);
 
     void remover(int id);
 }
