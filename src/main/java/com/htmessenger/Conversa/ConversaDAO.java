@@ -25,7 +25,7 @@ public class ConversaDAO  implements ConversaRepository{
          return entityManager.createQuery("" +
                  "FROM Conversa c " +
                  "WHERE c.usuarioOrigem.id ="+usuarioOrigem+" AND c.usuarioDestino="+usuarioDestino+" " +
-                 "OR c.usuarioDestino.id="+usuarioOrigem+"c.usuarioOrigem.id ="+usuarioDestino+"" +
+                 "OR c.usuarioDestino.id="+usuarioOrigem+"c.usuarioOrigem.id ="+usuarioDestino+" " +
                  "ORDER BY c.id" ).getResultList();
     }
 
