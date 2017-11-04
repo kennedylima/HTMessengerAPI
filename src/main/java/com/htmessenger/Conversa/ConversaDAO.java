@@ -16,6 +16,7 @@ public class ConversaDAO  implements ConversaRepository{
     EntityManager entityManager;
 
     @Override
+    @Transactional
     public void salvar(Conversa conversa) {
         entityManager.persist(conversa);
     }
