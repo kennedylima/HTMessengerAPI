@@ -18,6 +18,7 @@ public class ConversaDAO  implements ConversaRepository{
     @Override
     public void salvar(Conversa conversa) {
         entityManager.persist(conversa);
+        entityManager.flush();
     }
 
     @Override
