@@ -12,11 +12,12 @@ public class ConversaRestTest {
 
 
     private static int CONVERSA_ID = 0;
-    private static String URL = "http://htmessenger.herokuapp.com/conversa/";
-    private static String URL_USUARIO = "http://htmessenger.herokuapp.com/usuario/";
+    //private static String URL = "http://htmessenger.herokuapp.com/conversa/";
+    private static String URL = "localhost:8080/conversa/";
+    private static String URL_USUARIO = "localhost:8080/usuario/";
 
     @Test
-    public void deve_salvar_um_usuario(){
+    public void deve_salvar_uma_conversa(){
         salvarConversa();
     }
 

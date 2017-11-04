@@ -14,11 +14,11 @@ public class Conversa extends EntidadeBase {
     @JsonView
     private  String mensagem;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
     @JsonView
     private  Usuario usuarioOrigem;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
     @JsonView
     private  Usuario usuarioDestino;
 
