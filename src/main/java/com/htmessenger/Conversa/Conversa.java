@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.htmessenger.EntidadeBase;
 import com.htmessenger.Usuario.Usuario;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -16,11 +14,11 @@ public class Conversa extends EntidadeBase {
     @JsonView
     private  String mensagem;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonView
     private  Usuario usuarioOrigem;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonView
     private  Usuario usuarioDestino;
 
